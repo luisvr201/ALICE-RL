@@ -442,7 +442,7 @@ function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     const content = line.trim().replace(/^-/, "").trim();
 
     hierarchy.push({
-      level: level / 2,
+      level: level,
       content: content,
       id: jsMind.util.uuid.newid(),
     });
