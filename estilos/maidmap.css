@@ -1,0 +1,80 @@
+#main_container {
+    width: 200px;
+    position: relative;
+    z-index: 2;
+  }
+
+  #jsmind_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 1;
+  }
+
+  #jsmind_nav ul {
+    padding: 0;
+  }
+
+  #jsmind_nav li {
+    margin-right: 10px;
+  }
+
+  #jsmind_nav button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px;
+  }
+
+  #jsmind_nav button:hover {
+    color: #007bff;
+  }
+
+  #jsmind_nav label {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    color: #333;
+  }
+
+  #jsmind_nav label:hover {
+    color: #007bff;
+  }
+
+  .draggable {
+      position: fixed;
+      bottom: 0;
+      
+      margin-bottom: 2px;
+      margin-left: 4px;
+      background: #34495e;
+      border-radius: 5px;
+      box-shadow: 3px 4px 6px rgba(128, 128, 128, 0.5);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      cursor: move;
+      min-width: 600px;
+  }
+
+  .icon-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+  }
+
+  .icon-button:hover {
+      color: #007bff;
+  }
+  
+  body jmnode {
+      font: 12px/1.125 Verdana, Arial, Helvetica, sans-serif;
+      padding: 5px;
+  }

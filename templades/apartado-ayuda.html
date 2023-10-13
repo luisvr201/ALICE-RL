@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="help-popup" class="help-popup hidden">
+        <div class="help-popup-header">
+          <h3>Help</h3>
+          <button class="help-close-btn" onclick="closeHelpPopup()">
+            <i class="fas fa-window-close"></i>
+          </button>
+        </div>
+      
+        <div class="help-popup-content">
+            Creando un nuevo mapa y configurando el nombre del mapa:
+          <ul>
+            <li> Cambie la URL a archivo://<path>/maidmap.html?map=[map_name] </li>
+            <li> Este formato fue elegido para agregarlo fácilmente a favoritos en su navegador web.
+            </li>
+          </ul>
+          Interactuando con el mapa mental:
+          <ul>
+            <li> Haga clic con el mouse para seleccionar un nodo, haga doble clic para editar, presione Enter para guardar</li>
+            <li> Puede hacer clic y arrastrar el mouse para desplazarse por el mapa mental, o usar la rueda del mouse o los movimientos con dos dedos en el panel táctil para desplazar el mapa mental vertical u horizontalmente si es más grande en esas dimensiones (respectivamente) de la pantalla. </li>
+            <li> Arrastre los nodos con el mouse para pasar a otro nodo</li>
+            <li> Haga clic con el mouse en un círculo pequeño para expandir/contraer</li>
+            <li> Presione Enter para crear un sub nodo</li>
+            <li> Presione Ctrl-Enter para crear un nodo secundario.</li>
+            <li> Presione Suprimir para eliminar un nodo</li>
+          </ul>
+          Tenga en cuenta que los mapas se guardan automáticamente a través de la API IndexedDB, un almacenamiento basado en navegador al que solo puede acceder el mismo origen. En otras palabras, solo se puede acceder a sus mapas desde donde se proporciona esta página. Tenga cuidado al utilizar otras aplicaciones basadas en navegador que guarde o sirva desde la misma ubicación, ya que pueden acceder al almacenamiento de la API de IndexDB. Utilice únicamente código que sea abiertamente revisable, de código abierto o de una entidad confiable.
+
+          <br />
+          <br />
+          Barra de botones:
+          <ul>
+            <li> <i class="fas fa-download"></i> - Make a backup of the map. As mentioned above, the map is already stored in your browser, but this can be used for transferring between computers.</li>
+            <li> <i class="fas fa-upload"></i> - Load a backup of the map. The map must be empty to ensure you don't accidentally overwrite another map.</li>
+            <li> <i class="fas fa-share-alt"></i> - Get suggestions from GPT-3.5, which is what this is all about!  You can configure how this is done in settings.</li>
+            <li> <i class="fas fa-compress-alt"></i> - Collapse all</li>
+            <li> <i class="fas fa-expand-alt"></i> - Expand all</li>
+            <li> <i class="fas fa-search-plus"></i> - Zoom in</li>      
+            <li> <i class="fas fa-search-minus"></i> - Zoom out</li>
+            <li> <i class="fas fa-comments"></i> - Engage in a deeper discussion with GPT-3.5 about a particular node.  The first time you chat about a node both the mindmap and a series of questions will be sent to GPT API.  Subsequently, all messages will be prefixed with the mindmap only.  You can configure these prompts in settings.</li>
+            <li> <i class="fas fa-rotate-left"></i> - Undo, may have to click twice.  This is a bit hard to use right now, working on it.</li>
+            <li> <i class="fas fa-rotate-right"></i> - Redo, may have to click twice</li>
+            <li> <i class="fas fa-gear"></i> - Settings. You can change the prompts used to get suggestions and discuss nodes. Make sure you review them carefully before making changes. Backing up a copy of the prompt for reverting is probably a good idea.</li>
+          </ul>
+            </div>
+        </div>
+          </ul>
+          
+        </div>
+      </div>
+</body>
+</html>

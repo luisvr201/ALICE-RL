@@ -1,0 +1,54 @@
+  .help-popup {
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    width: 600px;
+    max-height: 750px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .help-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #0066ff;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+    font-family: "Roboto", sans-serif;
+   max-height: 35px;
+  }
+
+  .help-popup-header h3 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px; /* Adjust the font size according to your design preferences */
+  }
+
+  .help-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0;
+    margin: 0;
+    max-width: 30px;
+    /* align: right; */
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .help-popup-content {
+    padding: 20px;
+    overflow-y: auto;
+    font-family: "Roboto", sans-serif;
+  }

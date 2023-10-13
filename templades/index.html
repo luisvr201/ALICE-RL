@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ALICE-RL</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      integrity="sha384-l06Plad51xhuxEwX9KBVJsB3YBeDeDhvs7QAa0vF9pUb+i2SA40QpPF55L6Rfrzq"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../estilos/alerta.css">
+    <link rel="stylesheet" href="../estilos/chat-consultas.css">
+    <link rel="stylesheet" href="../estilos/configuracion.css">
+    <link rel="stylesheet" href="../estilos/inicio.css">
+    <link rel="stylesheet" href="../estilos/maidmap.css">
+    <link rel="stylesheet" href="../estilos/panel-ayuda.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/jsmind@0.5.4/style/jsmind.css" integrity="sha384-1nTEMjWXLLPe1f1aBitnnwTmPw8N71MrZQQBMQn7ua9HnvdBZrPzhT1DMp2h+baG" crossorigin="anonymous">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/jsmind-simbiotico@0.5.6/js/jsmind.js" integrity="sha384-R5+m5beLoKFGYYfHYhJjZOFuYIfT3HUmn/8DwFvhVikHnGKsaBes0K45Zme67izm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/jsmind-simbiotico@0.5.6/js/jsmind.draggable-node.js" integrity="sha384-GFQFZXgSIVm6wgUddmRKVIMyPAd+6Bk2TuUXnwb6U0PUMThttsKrAET9K/JawGTN" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- maidmap -->
+
+    <div id="jsmind_container"></div>
+<div id="main_container">
+  <div id="jsmind_nav">
+    <div id="button-bar" class="draggable">
+          <button  class="icon-button"  onclick="save_file();" title="Save File">
+          <i class="fas fa-download"></i>
+          </button>
+	      
+        <input
+          id="file_input"
+          class="file_input"
+          type="file"
+          style="display: none"
+        /><label for="file_input" title="Upload File"
+          ><i
+            style="color: #fff; margin-right: 20px; margin-top: 2px; font-size: 24px"
+            class="fas fa-upload"
+          ></i
+        ></label>
+      
+        <button class="icon-button" onclick="add_node();" id="add-node-button" title="Add Node">
+          <i class="fas fa-share-alt"></i>
+        </button>
+      
+        <button  class="icon-button"  onclick="collapse_all();" title="Collapse All">
+          <i class="fas fa-compress-alt"></i>
+        </button>
+      
+        <button  class="icon-button"  onclick="expand_all();" title="Expand All">
+          <i class="fas fa-expand-alt"></i>
+        </button>
+      
+        <button   class="icon-button"  id="zoom-in-button" onclick="zoomIn();" title="Zoom In">
+          <i class="fas fa-search-plus"></i>
+        </button>
+      
+        <button  class="icon-button" id="zoom-out-button" onclick="zoomOut();" title="Zoom Out">
+          <i class="fas fa-search-minus"></i>
+        </button>
+            
+        <button  class="icon-button" onclick="discuss_node()" title="Open Chat">
+          <i class="fas fa-comments"></i>
+        </button>
+      
+<!--        <button  class="icon-button" onclick="restructure()" title="Restructure">
+          <i class="fas fa-random"></i>
+        </button>-->
+      
+        <button  class="icon-button" onclick="undo()" title="Undo">
+          <i class="fas fa-rotate-left"></i>
+        </button>
+      
+        <button  class="icon-button" onclick="redo()" title="Redo">
+          <i class="fas fa-rotate-right"></i>
+        </button>
+      
+        <button  class="icon-button" onclick="openSettingsPopup()" title="Settings">
+          <i class="fas fa-gear"></i>
+        </button>
+        <button  class="icon-button" onclick="openHelpPopup()" title="Help">
+          <i class="fas fa-info-circle"></i>
+        </button>
+        </div>
+  <div style="display: none">
+    <input class="file" type="file" id="image-chooser" accept="image/*" />
+  </div>
+</div>
+</div>
+
+<!-- el apartado de ayuda  -->
+<!-- <div id="help-popup" class="help-popup hidden">
+        <div class="help-popup-header">
+          <h3>Help</h3>
+          <button class="help-close-btn" onclick="closeHelpPopup()">
+            <i class="fas fa-window-close"></i>
+          </button>
+        </div>
+      
+        <div class="help-popup-content">
+            Creando un nuevo mapa y configurando el nombre del mapa:
+          <ul>
+            <li> Cambie la URL a archivo://<path>/maidmap.html?map=[map_name] </li>
+            <li> Este formato fue elegido para agregarlo fácilmente a favoritos en su navegador web.
+            </li>
+          </ul>
+          Interactuando con el mapa mental:
+          <ul>
+            <li> Haga clic con el mouse para seleccionar un nodo, haga doble clic para editar, presione Enter para guardar</li>
+            <li> Puede hacer clic y arrastrar el mouse para desplazarse por el mapa mental, o usar la rueda del mouse o los movimientos con dos dedos en el panel táctil para desplazar el mapa mental vertical u horizontalmente si es más grande en esas dimensiones (respectivamente) de la pantalla. </li>
+            <li> Arrastre los nodos con el mouse para pasar a otro nodo</li>
+            <li> Haga clic con el mouse en un círculo pequeño para expandir/contraer</li>
+            <li> Presione Enter para crear un sub nodo</li>
+            <li> Presione Ctrl-Enter para crear un nodo secundario.</li>
+            <li> Presione Suprimir para eliminar un nodo</li>
+          </ul>
+          Tenga en cuenta que los mapas se guardan automáticamente a través de la API IndexedDB, un almacenamiento basado en navegador al que solo puede acceder el mismo origen. En otras palabras, solo se puede acceder a sus mapas desde donde se proporciona esta página. Tenga cuidado al utilizar otras aplicaciones basadas en navegador que guarde o sirva desde la misma ubicación, ya que pueden acceder al almacenamiento de la API de IndexDB. Utilice únicamente código que sea abiertamente revisable, de código abierto o de una entidad confiable.
+
+          <br />
+          <br />
+          Barra de botones:
+          <ul>
+            <li> <i class="fas fa-download"></i> - Make a backup of the map. As mentioned above, the map is already stored in your browser, but this can be used for transferring between computers.</li>
+            <li> <i class="fas fa-upload"></i> - Load a backup of the map. The map must be empty to ensure you don't accidentally overwrite another map.</li>
+            <li> <i class="fas fa-share-alt"></i> - Get suggestions from GPT-3.5, which is what this is all about!  You can configure how this is done in settings.</li>
+            <li> <i class="fas fa-compress-alt"></i> - Collapse all</li>
+            <li> <i class="fas fa-expand-alt"></i> - Expand all</li>
+            <li> <i class="fas fa-search-plus"></i> - Zoom in</li>      
+            <li> <i class="fas fa-search-minus"></i> - Zoom out</li>
+            <li> <i class="fas fa-comments"></i> - Engage in a deeper discussion with GPT-3.5 about a particular node.  The first time you chat about a node both the mindmap and a series of questions will be sent to GPT API.  Subsequently, all messages will be prefixed with the mindmap only.  You can configure these prompts in settings.</li>
+            <li> <i class="fas fa-rotate-left"></i> - Undo, may have to click twice.  This is a bit hard to use right now, working on it.</li>
+            <li> <i class="fas fa-rotate-right"></i> - Redo, may have to click twice</li>
+            <li> <i class="fas fa-gear"></i> - Settings. You can change the prompts used to get suggestions and discuss nodes. Make sure you review them carefully before making changes. Backing up a copy of the prompt for reverting is probably a good idea.</li>
+          </ul>
+            </div>
+        </div>
+          </ul>
+          
+        </div>
+      </div> -->
+
+      <!-- la alerta -->
+
+      <div id="custom-alert" class="custom-alert hidden">
+        <div class="custom-alert-content">
+          <span id = "custom-alert-message" class="custom-alert-message"></span>
+          <button class="custom-alert-close" onclick="closeCustomAlert()">OK</button>
+        </div>
+      </div>
+
+      <!-- el inicio -->
+
+      <div id="api-key-modal" class="modal">
+        <div class="modal-content">
+          <h2>Ingrese la clave API GPT3.5</h2>
+          <p>Ingrese su clave API GPT3.5-turbo para continuar. Esta es solo una aplicación del lado del navegador, no es un servidor excepto OpenAI.<br/>
+            La clave no se conserva en el almacenamiento del navegador y solo se usa cuando se envía a la API REST de OpenAI. <br />
+            El uso de tokens es relativamente ligero y puede encontrar un recuento de uso total en el apartado de configuracion <br />
+            <br />
+            Asegúrate de monitorear tus tokens en: <a href=https://openai.com/blog/openai-api></a>, y si deseas ver la guia de jsmaid aacede a:  <a href=https://github.com/hizzgdev/jsmind></a><br /></p>
+          <input type="text" id="api-key-input" style="-webkit-text-security: disc;">
+          <button id="submit-api-key">Entregar</button>
+        </div>
+      </div>
+
+      <!-- apartado de configuracion -->
+
+      <div id="settings-popup" class="popup hidden">
+        <div class="popup-header">
+          <h3>Settings</h3>
+          <button class="close-btn" onclick="closeSettingsPopup()">
+            <i class="fas fa-window-close"></i>
+          </button>
+        </div>
+        <div class="popup-content">
+          <form id="settings-form">
+            <div class="form-group">
+              <label for="token-usage">Uso de tokens para este mapa:
+              </label>
+              <label
+                id="token-usage"
+              ></label>
+            </div>
+            <div class="form-group">
+              <label for="child-node-suggestion">Mensaje de sugerencia de nodo secundario :</label>
+              <textarea
+                id="child-node-suggestion"
+                rows="8"
+                placeholder="Enter child node suggestion prompt."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="discuss-node-prompt">Discutir mensaje de nodo:</label>
+              <textarea
+                id="discuss-node-prompt"
+                rows="18"
+                placeholder="Enter discuss node prompt"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="prefix-prompt">Discutir el prefijo de aviso:</label>
+              <textarea
+                id="prefix-prompt"
+                rows="5"
+                placeholder="Enter prompt prefix"
+              ></textarea>
+            </div>
+           <div class="form-group">
+              <label for="prefix-prompt">Restructure Prompt:</label>
+              <textarea
+                id="restructure-prompt"
+                rows="5"
+                placeholder="Enter restructure"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="gpt-engine">Motor GPT:</label>
+              <input id="gpt-engine" type="text" placeholder="Enter GPT engine" />
+            </div>
+              
+            <div class="form-group">
+              <label for="temperature">Temperatura:</label>
+              <input id="temperature" type="text" placeholder="Enter temperature" />
+            </div>
+              
+            <div class="form-group">
+              <label for="theme">Tema:</label>
+            <select onchange="set_theme(this.value);">
+                <option value="">por defecto</option>
+                <option value="primary">primario</option>
+                <option value="warning">advertencia</option>
+                <option value="danger">peligro</option>
+                <option value="success">éxito</option>
+                <option value="info">informatico</option>
+                <option value="greensea" selected="selected">Marverde</option>
+                <option value="nephrite">jade</option>
+                <option value="belizehole">belice</option>
+                <option value="wisteria">glicina</option>
+                <option value="asphalt">asfalto</option>
+                <option value="orange">naranja</option>
+                <option value="pumpkin">calabaza</option>
+                <option value="pomegranate">granada</option>
+                <option value="clouds">nubes</option>
+                <option value="asbestos">amianto</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+
+<!-- consultas al chat-gpt -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-header">
+      <h3>Chatea con GPT</h3>
+      <button class="close-btn" onclick="closeChatPopup()">
+        <i class="fas fa-window-close"></i>
+      </button>
+    </div>
+    <div class="chat-content">
+      <div class="chat-messages" id="chat-messages"></div>
+      <div id="anchor"></div>
+    </div>
+    <div class="chat-input">
+      <textarea
+        id="chat-input-text"
+        rows="3"
+        placeholder="Escriba su mensaje, tenga en cuenta que la lista jerárquica anterior aparecerá como prefijo en su mensaje para que pueda consultarla en su mensaje.
+        ."
+      ></textarea>
+      <button class="send-button" onclick="submitChatMessage()">Enviar</button>
+    </div>
+    <div class="resize-handle"><i class="fas fa-arrows-alt"></i></div>
+  </div>
+    
+</body>
+<script src="../js/alerta.js"></script>
+<script src="../js/chat-consulta.js"></script>
+<script src="../js/configuración.js"></script>
+<script src="../js/inicio.js"></script>
+<script src="../js/jsmaid.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/maidmap.js"></script>
+<script src="../js/panel-ayuda.js"></script>
+<script src="../js/tools.js"></script>
+</html>

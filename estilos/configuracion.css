@@ -1,0 +1,78 @@
+.popup {
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    width: 600px;
+    height: 750px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #0066ff;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .popup-header h3 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px; /* Adjust the font size according to your design preferences */
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .popup-content {
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  textarea,
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  .save-btn {
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+  }
