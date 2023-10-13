@@ -431,7 +431,9 @@ async function get_children_suggestions(node, _jm, tmpl) {
 
 function processGptResponse(response, selected_node, _jm, do_scroll = true) {
   // Paso 1: extraiga el contenido entre las etiquetas <embed>
-  const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
+ const embedMatch = response.match(/<embed>([\s\S]*?)<\/embed>/);
+    if (embedMatch && embedMatch[1]) {
+  const embedContent = embedMatch[1].trim();
 
   //Paso 2: Procese el contenido extraído y cree la jerarquía
   const lines = embedContent.split("\n");
@@ -442,7 +444,7 @@ function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     const content = line.trim().replace(/^-/, "").trim();
 
     hierarchy.push({
-      level: level,
+      level: level/2,
       content: content,
       id: jsMind.util.uuid.newid(),
     });
