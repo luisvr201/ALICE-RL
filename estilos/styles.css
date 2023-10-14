@@ -1,0 +1,93 @@
+.information-important{
+    margin: 4rem auto;
+    width: 80vw;
+    background: red;
+    height: 26rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body{
+    overflow-x: hidden;
+    /* background: rgb(33,37,41); */
+    color: aliceblue;
+}
+.information-innovacion{
+    margin: 4rem auto;
+    width: 80vw;
+    background: rgb(30, 0, 255);
+    height: 26rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.information-framework{
+    margin: 4rem auto;
+    width: 80vw;
+    background: rgb(0, 255, 106);
+    height: 26rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lol{
+    width: 98.5vw;
+    margin: 4rem 0;
+    padding: 0;
+}
+.alice{
+    position: absolute;
+    z-index: 2;
+    right: 2rem;
+    top: 40rem;
+    width: 4rem;
+    background: red;
+    height: 4rem;
+}
+.encabezado{
+    margin: 2rem 0;
+    display: flex;
+    padding: 0 0;
+}
+.encabezado div{
+    height: 4rem;
+    width: 4rem;
+    margin-right: 2rem;
+    background: rgb(255, 166, 0);
+}
+.tablero-proyect{
+    text-align: left;
+}
+.content-projects{
+    background-color: rgb(59, 67, 75);
+    height: 30rem;
+}
+.content-projects .row{
+    margin: 0 auto;
+}
+.nou{
+    margin: 2vw 2vw;
+}
+.card{
+    overflow: hidden;
+    height: 8rem;
+}
+.alice{
+    position: sticky;
+    left: 92vw;
+    border-radius: 10px;
+    border: none;
+    background: rgb(53, 197, 173);
+    font-size: 1.4rem;
+    &:hover{
+        background: rgb(60, 228, 200);
+        color: rgb(223, 234, 243);
+        font-weight: bold;
+    }
+}
+.arrow{
+    margin-left: 2rem;
+}
+.arrow-2{
+    padding-top: 2rem;
+}
