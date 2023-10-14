@@ -1,0 +1,155 @@
+body{
+    backdrop-filter: blur(10px);
+    background-image: url(https://cdn.leonardo.ai/users/504472fe-ed75-4663-b2c8-959354309a44/generations/d02097a6-cf50-4fa4-97c5-7f739b4537c9/DreamShaper_v7_imagen_sobre_la_metodologia_lean_starup_y_el_us_0.jpg);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+    padding: 20px; 
+    background-repeat: no-repeat;
+    background-size: 114em;
+    overflow: hidden;
+}
+.containerSignUp{
+    width: 90vw;
+    height: 38vw;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin: 15vh auto;
+    background-color: rgba(216, 200, 200, 0.5);
+    /* background: linear-gradient(135deg, rgba(255,255,255,0.1),rgba(255,255,255,0)); */
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.left-form label{
+    color: #252525;
+}
+.left-form input{
+    width: 35vw;
+    height: 2vw;
+    margin: 10px 0;
+    background: none;
+    border: 2px solid #252525;
+    border-radius: 5px;
+    color: solid #151414;
+    outline: none;
+}
+input{
+  width: 40vw;
+  height: 2vw;
+  margin: 10px 0;
+}
+.form-container-corp{
+    display: grid;
+    grid-column: auto;
+    grid-row: auto;
+    grid-template: "left mid right";
+     
+    height:30vw;
+
+}
+.left-form{
+  margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    grid-area: right;
+    margin-left: 1vw;
+}
+hr{
+    width: 1px;
+    height: 8rem;
+    background: #fff;
+}
+.mid-form{
+    writing-mode: vertical-lr;
+    width: 2vw;
+    justify-content: center;
+    display: flex;
+    grid-area: mid;
+    color: #fff;
+    align-items: center;
+}
+.mid-form span{
+    writing-mode: horizontal-tb;
+}
+.right-form{
+    width: 30vw;
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.right-form button{
+    margin: 10px 0;
+    border: none;
+}
+.button {
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+  .btn-registro{
+    margin: 0 auto;
+    margin-top: 35px;
+  }
+  .button:hover {
+    box-shadow: .5px .5px 150px #252525;
+  }
+  .type1::after {
+    content: "Go";
+    height: 50px;
+    width: 150px;
+    background-color: #008080;
+    color: #fff;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(50px);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .type1::before {
+    content: "Registrar";
+    height: 50px;
+    width: 150px;
+    background-color: #fff;
+    color: #008080;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(0px) scale(1.2);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+  }
+  .type1:hover::after {
+    transform: translateY(0) scale(1.2);
+  } 
+  .type1:hover::before {
+    transform: translateY(-50px) scale(0) rotate(120deg);
+  }
+  .col{
+    margin-top: -8px;
+  }
+  .imagen{
+    background-image: url(https://cdn.leonardo.ai/users/504472fe-ed75-4663-b2c8-959354309a44/generations/d02097a6-cf50-4fa4-97c5-7f739b4537c9/DreamShaper_v7_imagen_sobre_la_metodologia_lean_starup_y_el_us_0.jpg);
+    height: 35.2rem;
+    border-radius: 10px 0  0 10px;
+    background-size: cover;
+  }
