@@ -434,6 +434,7 @@ async function get_children_suggestions(node, _jm, tmpl) {
 // dlskajdalksjdlaksjdla
 
 function processGptResponse(response, selected_node, _jm, do_scroll = true) {
+    let embedContent = "";
     const match = response.match(/<embed>([\s\S]*?)<\/embed>/);
     if (match) {
       const embedContent = match[1].trim();
