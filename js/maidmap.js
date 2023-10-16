@@ -429,26 +429,75 @@ async function get_children_suggestions(node, _jm, tmpl) {
   return data;
 }
 
+// function processGptResponse(response, selected_node, _jm, do_scroll = true) {
+//     let count = 0;
+//     // Paso 1: extraiga el contenido entre las etiquetas <embed>
+//     const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[count].trim();
+//   //Paso 2: Procese el contenido extraído y cree la jerarquía
+//   const lines = embedContent.split("\n");
+//   const hierarchy = [];
+
+//   for (const line of lines) {
+//     const level = line.search(/\S/);
+//     const content = line.trim().replace(/^-/, "").trim();
+
+//     hierarchy.push({
+//       level: level/2,
+//       content: content,
+//       id: jsMind.util.uuid.newid(),
+//     });
+//   }
+
+//   console.log(hierarchy);
+//   // Paso 3: agregue nodos a jsMind con las conexiones correctas
+//   for (let i = 0; i < hierarchy.length; i++) {
+//     const currentNode = hierarchy[i];
+//     let parentId = selected_node;
+
+//     if (currentNode.level > 0) {
+//       for (let j = i - 1; j >= 0; j--) {
+//         if (hierarchy[j].level === currentNode.level - 1) {
+//           parentId = hierarchy[j].id;
+//           break;
+//         }
+//       }
+//     }
+
+//   nd = _jm.add_node(parentId, currentNode.id, currentNode.content);
+//   console.log(nd);
+//   if (do_scroll) {
+//       nd._data.view.element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: "nearest"  });
+//   }
+//   }
+//     count = count +1; 
+// }
+
 function processGptResponse(response, selected_node, _jm, do_scroll = true) {
-    let count = 0;
-    // Paso 1: extraiga el contenido entre las etiquetas <embed>
-    const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[count].trim();
-  //Paso 2: Procese el contenido extraído y cree la jerarquía
+  // Paso 1: extraiga el contenido entre las etiquetas <embed>
+  const embedMatches = response.match(/<embed>([\s\S]*?)<\/embed>/);
+
+  if (!embedMatches) {
+    console.log("No se encontraron etiquetas <embed> en la respuesta.");
+    return;
+  }
+
+  const embedContent = embedMatches[1].trim();
+
+  // Paso 2: Procese el contenido extraído y cree la jerarquía
   const lines = embedContent.split("\n");
   const hierarchy = [];
 
   for (const line of lines) {
-    const level = line.search(/\S/);
+    const level = line.search(/\S);
     const content = line.trim().replace(/^-/, "").trim();
 
     hierarchy.push({
-      level: level/2,
+      level: level / 2,
       content: content,
       id: jsMind.util.uuid.newid(),
     });
   }
 
-  console.log(hierarchy);
   // Paso 3: agregue nodos a jsMind con las conexiones correctas
   for (let i = 0; i < hierarchy.length; i++) {
     const currentNode = hierarchy[i];
@@ -463,15 +512,20 @@ function processGptResponse(response, selected_node, _jm, do_scroll = true) {
       }
     }
 
-  nd = _jm.add_node(parentId, currentNode.id, currentNode.content);
-  console.log(nd);
-  if (do_scroll) {
-      nd._data.view.element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: "nearest"  });
+    const nd = _jm.add_node(parentId, currentNode.id, currentNode.content);
+
+    if (do_scroll) {
+      const element = nd._data.view.element;
+      element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: "nearest" });
+    }
   }
-  }
-    count = count +1; 
 }
 
+
+
+
+
+// akslkdlaskdlsakld
 async function add_node() {
   var selected_node = _jm.get_selected_node(); // as parent of new node
   if (!selected_node) {
