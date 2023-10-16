@@ -72,13 +72,10 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
         "${hyphenated_list}\n" +
         "Me gustaría hablar con usted sobre el '${text_of_node}' nodo.\n" +
         "Responde con tus pensamientos sobre:\n" +
-        "1. Qué significa este nodo, tanto específica como generalmente\n" +
+        "1. Qué significa este nodo, tanto específica generalmente\n" +
         "2. La relevancia de este nodo, cómo contribuye individual y holísticamente\n" +
         "3. Dónde encaja en el mapa mental (consulte la sangría enumerada arriba)\n" +
-        "4. ¿Cuáles son algunas cosas a considerar al agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
-        "5. ¿Cuáles son algunas buenas preguntas para hacerle a ChatGPT para comprender mejor este nodo?\n" +
-        "6. Y, por último, sólo algunas ideas creativas novedosas en las que pensar en relación con este nodo.\n" +
-        "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones list above."
+        "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones en una lista arriba."
     );
 
     document.getElementById("child-node-suggestion").value = getValueOrDefault(
@@ -87,12 +84,12 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       "Estoy creando un mapa mental. Esto es lo que está visible actualmente\n" +
         "${hyphenated_list}\n" +
         "Necesito algunas ideas para agregar al menos dos nodos secundarios a '${text_of_node}'.\n" +
-        "Proporcione una lista de sugerencias, en el mismo formato con guiones anterior, que serían hijos ideales de '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.       .\n" +
+        "Proporcione una lista de sugerencias, en el mismo formato con guiones anterior, que serían los subnodos '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.       .\n" +
         "Rodee la lista de sugerencias con <embed> </embed>\n" +
         "No haga sugerencias que sean redundantes respecto de las ya enumeradas anteriormente.\n" +
         "No repitas${text_of_node}' en la lista.\n"+
 	"Debe haber al menos dos sugerencias para los nodos secundarios inmediatos de '${text_of_node}'.\n"+
-	"Cada sugerencia debe complementar, aumentar y armonizar con el mapa mental mencionado anteriormente..\n"
+	"Cada sugerencia debe complementar, aumentar y armonizar con el mapa mental mencionado anteriormente.\n"
     );
     document.getElementById("prefix-prompt").value = getValueOrDefault(
       options,
@@ -100,16 +97,16 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       "Estoy creando un mapa mental. Esto es lo que está visible actualmente en el mapa mental:\n${hyphenated_list}\nI quisiera discutir el'${cur_topic}' nodo.\n\n"
     );
 
-    document.getElementById("restructure-prompt").value = getValueOrDefault(
-      options,
-      "restructure-prompt",
-	"Estoy creando un mapa mental. Esto es lo que está visible actualmente en el mapa mental:\n${hyphenated_list}\n"+
-	"Reestructurar el mapa mental mencionado anteriormente para convertirlo en un mapa mental más coherente, claro e impactante.\n"+
-	    "El mapa mental reestructurado debe tener muchos niveles, pero no menos de 3 niños y no más de 6 niños por elemento.\n"+
-	    "Utilice el mismo formato jerárquico con guiones anterior, sin líneas vacías.\n"+
-	    "Asegúrese de que la lista jerárquica con guiones esté rodeada por <embed> </embed>..\n"+
-	    "No incluya el nodo de nivel superior.\n"
-    );
+ //    document.getElementById("restructure-prompt").value = getValueOrDefault(
+ //      options,
+ //      "restructure-prompt",
+	// "Estoy creando un mapa mental. Esto es lo que está visible actualmente en el mapa mental:\n${hyphenated_list}\n"+
+	// "Reestructurar el mapa mental mencionado anteriormente para convertirlo en un mapa mental más coherente, claro e impactante.\n"+
+	//     "El mapa mental reestructurado debe tener muchos niveles, pero no menos de 3 niños y no más de 6 niños por elemento.\n"+
+	//     "Utilice el mismo formato jerárquico con guiones anterior, sin líneas vacías.\n"+
+	//     "Asegúrese de que la lista jerárquica con guiones esté rodeada por <embed> </embed>..\n"+
+	//     "No incluya el nodo de nivel superior.\n"
+ //    );
 
     document.getElementById("gpt-engine").value = getValueOrDefault(
       options,
@@ -119,6 +116,6 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
     document.getElementById("temperature").value = getValueOrDefault(
       options,
       "temperature",
-      "0.5"
+      "0.8"
     );
   }
