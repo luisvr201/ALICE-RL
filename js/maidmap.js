@@ -473,7 +473,7 @@ async function get_children_suggestions(node, _jm, tmpl) {
 // }
 function processGptResponse(response, selected_node, _jm) {
 
-  const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
+  const embedContent = response.match(/<embed>([^<]*)<\/embed>/)[1].trim();
 
   const lines = embedContent.split("\n");
 
