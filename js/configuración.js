@@ -75,6 +75,8 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
         "1. Qué significa este nodo, tanto específica generalmente\n" +
         "2. La relevancia de este nodo, cómo contribuye individual y holísticamente\n" +
         "3. Dónde encaja en el mapa mental (consulte la sangría enumerada arriba)\n" +
+	"4. ¿Cuáles son algunas cosas a considerar al agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
+	"5. Y, por último, sólo algunas ideas creativas novedosas en las que pensar en relación con este nodo.\n" +
         "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones en una lista arriba."
     );
 
