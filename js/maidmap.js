@@ -430,48 +430,95 @@ async function get_children_suggestions(node, _jm, tmpl) {
 }
 // dlskajdalksjdlaksjdla
 
-function processGptResponse(response, selected_node, _jm, do_scroll = true) {
+// function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     
-    // Paso 1: extraiga el contenido entre las etiquetas <embed>
+//     // Paso 1: extraiga el contenido entre las etiquetas <embed>
+//   const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
+//   //Paso 2: Procese el contenido extraído y cree la jerarquía
+//   const lines = embedContent.split("\n");
+//   const hierarchy = [];
+
+//   for (const line of lines) {
+//     const level = line.search(/\S/);
+//     const content = line.trim().replace(/^-/, "").trim();
+
+//     hierarchy.push({
+//       level: level/2,
+//       content: content,
+//       id: jsMind.util.uuid.newid(),
+//     });
+//   }
+
+//   console.log(hierarchy);
+//   // Paso 3: agregue nodos a jsMind con las conexiones correctas
+//   for (let i = 0; i < hierarchy.length; i++) {
+//     const currentNode = hierarchy[i];
+//     let parentId = selected_node;
+
+//     if (currentNode.level > 0) {
+//       for (let j = i - 1; j >= 0; j--) {
+//         if (hierarchy[j].level === currentNode.level - 1) {
+//           parentId = hierarchy[j].id;
+//           break;
+//         }
+//       }
+//     }
+
+//   nd = _jm.add_node(parentId, currentNode.id, currentNode.content);
+//   console.log(nd);
+//   if (do_scroll) {
+//       nd._data.view.element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: "nearest"  });
+//   }
+//   }
+// }
+function processGptResponse(response, selected_node, _jm) {
+
   const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
-  //Paso 2: Procese el contenido extraído y cree la jerarquía
+
   const lines = embedContent.split("\n");
+
   const hierarchy = [];
+  const levels = {};
 
   for (const line of lines) {
-    const level = line.search(/\S/);
+    
+    const matches = line.match(/^(-*)/);
+    const level = matches[1].length / 2;
+
     const content = line.trim().replace(/^-/, "").trim();
 
+    levels[id] = level;
+
     hierarchy.push({
-      level: level/2,
-      content: content,
-      id: jsMind.util.uuid.newid(),
+      id: id,
+      content: content
     });
+
   }
 
-  console.log(hierarchy);
-  // Paso 3: agregue nodos a jsMind con las conexiones correctas
   for (let i = 0; i < hierarchy.length; i++) {
-    const currentNode = hierarchy[i];
+
+    const {id, content} = hierarchy[i];
     let parentId = selected_node;
 
-    if (currentNode.level > 0) {
+    if (i === 0) {
+      parentId = null; 
+    } else {
+      const currentLevel = levels[id];
       for (let j = i - 1; j >= 0; j--) {
-        if (hierarchy[j].level === currentNode.level - 1) {
+        const parentLevel = levels[hierarchy[j].id];
+        if (parentLevel === currentLevel - 1) {
           parentId = hierarchy[j].id;
           break;
         }
       }
     }
 
-  nd = _jm.add_node(parentId, currentNode.id, currentNode.content);
-  console.log(nd);
-  if (do_scroll) {
-      nd._data.view.element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: "nearest"  });
-  }
-  }
-}
+    const node = _jm.add_node(parentId, id, content);
 
+  }
+
+}
 // akslkdlaskdlsakld
 
 async function add_node() {
