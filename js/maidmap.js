@@ -433,15 +433,7 @@ async function get_children_suggestions(node, _jm, tmpl) {
 function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     
     // Paso 1: extraiga el contenido entre las etiquetas <embed>
-    const embedMatches = response.match(/<embed>([\s\S]*?)<\/embed>/);
-
-  if (!embedMatches) {
-    console.log("No se encontraron etiquetas <embed> en la respuesta.");
-    return;
-  }
-
-  const embedContent = embedMatches[0].trim();
-    // const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[count].trim();
+  const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
   //Paso 2: Procese el contenido extraído y cree la jerarquía
   const lines = embedContent.split("\n");
   const hierarchy = [];
