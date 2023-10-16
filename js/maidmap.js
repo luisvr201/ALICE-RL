@@ -532,24 +532,8 @@ async function add_node() {
     return;
   }
 
-async function get_embedded_response(selected_node, _jm, inputValue) {
-  try {
-    const response = await get_children_suggestions(selected_node, _jm, inputValue);
-
-    // Verifica si response ya contiene etiquetas <embed></embed>
-    if (response.indexOf('<embed>') === -1 || response.indexOf('</embed>') === -1) {
-      // Si alguna de las etiquetas no está presente, agrégalas al principio y al final del contenido
-      return '<embed>' + response + '</embed>';
-    }
-
-    return response; // Si ya contiene las etiquetas <embed>, no hagas cambios
-  } catch (error) {
-    console.error('Error en get_embedded_response:', error);
-    return ''; // Manejar errores según tus necesidades
-  }
-}
   // Llame a la función get_children_suggestions y espere la respuesta
-    // const response = await get_children_suggestions(selected_node, _jm, document.getElementById("child-node-suggestion").value);
+  const response = await get_children_suggestions(selected_node, _jm, document.getElementById("child-node-suggestion").value);
     
   console.log(response);
     // Llame a la función ProcessGptResponse para procesar la respuesta y agregar nodos
