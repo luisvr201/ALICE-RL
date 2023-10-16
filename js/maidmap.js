@@ -491,7 +491,7 @@ function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     const level = line.search(/\S);
     const content = line.trim().replace(/^-/, "").trim();
 
-    hierarchy.push({
+    return hierarchy.push({
       level: level / 2,
       content: content,
       id: jsMind.util.uuid.newid(),
