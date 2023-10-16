@@ -434,30 +434,29 @@ async function get_children_suggestions(node, _jm, tmpl) {
 // dlskajdalksjdlaksjdla
 
 function processGptResponse(response, selected_node, _jm, do_scroll = true) {
-    let embedContent = "";
-    const match = response.match(/<embed>([\s\S]*?)<\/embed>/);
-    if (match) {
-      const embedContent = match[1].trim();
-  // Ahora puedes trabajar con embedContent
-    } else {
-  // Manejar el caso en el que no se encontró ninguna coincidencia
-      console.error('No se encontró ninguna coincidencia en response');
-    }
-    
-// //     // Paso 1: extraiga el contenido entre las etiquetas <embed>
-//   const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
+  let embedContent = "";
+  const match = response.match(/<embed>([\s\S]*?)<\/embed>/);
+  if (match) {
+    embedContent = match[1].trim();
+  } else {
+    // Manejar el caso en el que no se encontró ninguna coincidencia
+    console.error('No se encontró ninguna coincidencia en response');
+  }
+
   //Paso 2: Procese el contenido extraído y cree la jerarquía
   const lines = embedContent.split("\n");
   const hierarchy = [];
 
-  for (const line of lines) {
-    const level = line.search(/\S/);
+  for (let i = 1; i <= lines.length; i++) { // Comenzar el contador en 1
+    const line = lines[i - 1]; // Restar 1 para acceder a la línea correcta
+    const level = line.search(/\S);
     const content = line.trim().replace(/^-/, "").trim();
 
     hierarchy.push({
-      level: level/2,
+      level: level / 2,
       content: content,
       id: jsMind.util.uuid.newid(),
+      lineNumber: i, // Agregar el número de línea
     });
   }
 
