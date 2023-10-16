@@ -534,6 +534,12 @@ async function add_node() {
 
   // Llame a la función get_children_suggestions y espere la respuesta
     const response = await get_children_suggestions(selected_node, _jm, document.getElementById("child-node-suggestion").value);
+
+        if (response.innerHTML.indexOf('<embed>') === -1 || response.innerHTML.indexOf('</embed>') === -1) {
+      // Si alguna de las etiquetas no está presente, agrégalas al principio y al final del contenido
+          response.innerHTML = '<embed>' + response.innerHTML + '</embed>';
+    }
+    
   console.log(response);
     // Llame a la función ProcessGptResponse para procesar la respuesta y agregar nodos
     console.log("add_node redo_manager true");
