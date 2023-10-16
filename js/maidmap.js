@@ -430,7 +430,7 @@ async function get_children_suggestions(node, _jm, tmpl) {
 }
 // dlskajdalksjdlaksjdla
 
-// function processGptResponse(response, selected_node, _jm, do_scroll = true) {
+function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     
 //     // Paso 1: extraiga el contenido entre las etiquetas <embed>
   const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[1].trim();
