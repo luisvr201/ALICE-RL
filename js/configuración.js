@@ -69,8 +69,7 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       options,
       "discuss-node-prompt",
       "Estoy creando un mapa mental. Esto es lo que está actualmente visible en el mapa mental:\n" +
-        "${hyphenated_list}\n" +
-	"Rodee la lista de sugerencias con <embed> </embed>\n" +
+        "${hyphenated_list}, y Rodee la lista de sugerencias con <embed> </embed>  \n" +
         "Me gustaría hablar con usted sobre el '${text_of_node}' nodo.\n" +
         "Responde con tus pensamientos sobre:\n" +
         "1. Qué significa este nodo, tanto específica generalmente\n" +
@@ -85,8 +84,7 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       options,
       "child-node-suggestion",
       "Estoy creando un mapa mental. Esto es lo que está visible actualmente\n" +
-        "${hyphenated_list}\n" +
-	"Rodee la lista de sugerencias con <embed> </embed>\n" +
+        "${hyphenated_list}, y las respuestas Rodee la lista de sugerencias con <embed> </embed> \n" +
         "Necesito algunas ideas para agregar al menos dos nodos secundarios a '${text_of_node}'.\n" +
         "Proporcione una lista de sugerencias, en el mismo formato con guiones anterior, que serían los subnodos '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.\n" +
         "No haga sugerencias que sean redundantes respecto de las ya enumeradas anteriormente.\n" +
