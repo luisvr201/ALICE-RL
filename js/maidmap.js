@@ -440,7 +440,7 @@ function processGptResponse(response, selected_node, _jm, do_scroll = true) {
     return;
   }
 
-  const embedContent = embedMatches[1].trim();
+  const embedContent = embedMatches[0].trim();
     // const embedContent = response.match(/<embed>([\s\S]*?)<\/embed>/)[count].trim();
   //Paso 2: Procese el contenido extraído y cree la jerarquía
   const lines = embedContent.split("\n");
