@@ -51,13 +51,13 @@ function createUpdatePopupSize(maxHeight, maxWidth, div) {
     return function () {
     const windowHeight = window.innerHeight;
     if (windowHeight < maxHeight) {
-        div.style.height = (windowHeight * 0.9) + "px"; // Establezca la altura de la ventana emergente al 80% de la altura de la ventana
+        div.style.height = (windowHeight * 0.8) + "px"; // Establezca la altura de la ventana emergente al 80% de la altura de la ventana
     } else {
         div.style.height = maxHeight;
     }
     const windowWidth = window.innerWidth;
     if (windowWidth < maxWidth) {
-        div.style.width = (windowWidth * 0.9) + "px"; // Establezca la altura de la ventana emergente al 80% de la altura de la ventana
+        div.style.width = (windowWidth * 0.8) + "px"; // Establezca la altura de la ventana emergente al 80% de la altura de la ventana
 
     } else {
         div.style.width = maxWidth; // Restablecer la altura de la ventana emergente a automática cuando la ventana sea más grande
