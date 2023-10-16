@@ -362,10 +362,13 @@ async function chatGPTRequest(prompt, curNode = null) {
     try {
 
     gptEngine = document.getElementById("gpt-engine").value;
-    maxTokens = 100; //document.getElementById("max-tokens").value;
+    maxTokens = parseInt(document.getElementById("gpt-token").value);
+    if (isNaN(maxTokens)){
+        maxTokens = 400;
+    } //document.getElementById("max-tokens").value; 
     temperature = parseFloat(document.getElementById("temperature").value);
     if (isNaN(temperature)){
-        temperature = 0.1;
+        temperature = 0.8;
     }
     const response = await fetch(API_URL, {
       method: "POST",
