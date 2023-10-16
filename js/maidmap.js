@@ -255,7 +255,7 @@ function get_def_mind() {
     format: "node_tree",
     data: {
       id: "root",
-      topic: "ALICE-RL",
+      topic: "Tema de inovación",
     },
   };
     return mind;
@@ -289,7 +289,7 @@ async function open_empty() {
     const mind = get_def_mind();
     const options = await loadData(dbName, mind);
     console.log("open_empty performAction");
-  undoRedoManager.performAction(options);
+    undoRedoManager.performAction(options);
     _jm = init_jm(def_options, options);
 }
 
@@ -534,7 +534,7 @@ async function add_node() {
     // Llame a la función ProcessGptResponse para procesar la respuesta y agregar nodos
     console.log("add_node redo_manager true");
     redo_manager_disabled = true;
-    processGptResponse(response, selected_node, _jm);
+    processGptResponse(response, selected_node, _jm, do_scroll = true);
     console.log("add_node redo_manager false");
     setTimeout(async () => {
     redo_manager_disabled = false;
@@ -553,7 +553,7 @@ async function restructure() {
 
     console.log(response);
   
-    processGptResponse(response, selected_node, _jm);
+    processGptResponse(response, selected_node, _jm, do_scroll = true);
 
 }
 
