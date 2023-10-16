@@ -534,12 +534,12 @@ async function add_node() {
     // Llame a la función ProcessGptResponse para procesar la respuesta y agregar nodos
     console.log("add_node redo_manager true");
     redo_manager_disabled = true;
-    processGptResponse(response, selected_node, _jm,do_scroll = true);
+    processGptResponse(response, selected_node, _jm);
     console.log("add_node redo_manager false");
     setTimeout(async () => {
     redo_manager_disabled = false;
     await autoSaveData();
-    }, 100);
+    }, 1000);
 }
 
 async function restructure() {
@@ -553,7 +553,7 @@ async function restructure() {
 
     console.log(response);
   
-    processGptResponse(response, selected_node, _jm,do_scroll = true);
+    processGptResponse(response, selected_node, _jm);
 
 }
 
