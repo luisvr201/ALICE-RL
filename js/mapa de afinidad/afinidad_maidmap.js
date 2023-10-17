@@ -155,7 +155,7 @@ function patch_jm(_jm) {
     return new Promise((resolve, reject) => {
       var transaction = db.transaction(["dataStores"], "readonly");
       var objectStore = transaction.objectStore("dataStores");
-      var request = objectStore.get(2);
+      var request = objectStore.get(1);
   
       request.onsuccess = (event) => {
         const data = event.target.result;
@@ -177,7 +177,7 @@ function patch_jm(_jm) {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(["dataStores"], "readwrite");
       const objectStore = transaction.objectStore("dataStores");
-      const request = objectStore.put({ id: 1, value: data });
+      const request = objectStore.put({ id: 2, value: data });
   
       request.onsuccess = (event) => {
         resolve();
