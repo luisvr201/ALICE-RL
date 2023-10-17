@@ -534,10 +534,10 @@ async function add_node() {
 
   // Llame a la función get_children_suggestions y espere la respuesta
   const response = await get_children_suggestions(selected_node, _jm, document.getElementById("child-node-suggestion").value);
-    if (response.indexOf('<embed>') === -1 || response.indexOf('</embed>') === -1) {
-  // Si alguna de las etiquetas no está presente, agrégalas alrededor del texto
-      response = '<embed>' + response + '</embed>';
-    }
+  //   if (response.indexOf('<embed>') === -1 || response.indexOf('</embed>') === -1) {
+  // // Si alguna de las etiquetas no está presente, agrégalas alrededor del texto
+  //     response = '<embed>' + response + '</embed>';
+  //   }
     
 console.log(response); // Esto mostrará la cadena con las etiquetas agregadas si es necesario.
     console.log("add_node redo_manager true");
