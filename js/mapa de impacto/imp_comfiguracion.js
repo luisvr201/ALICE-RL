@@ -67,16 +67,13 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
     document.getElementById("discuss-node-prompt").value = getValueOrDefault(
       options,
       "discuss-node-prompt",
-      "Estoy creando un mapa de afinidad. Esto es lo que está actualmente visible en el mapa de afinidad:\n" +
+        "Estoy creando un mapa de impacto. Esto es lo que está actualmente visible en el mapa de impacto:\n" +
         "${hyphenated_list}\n" +
-        "Me gustaría hablar con usted sobre el '${text_of_node}' nodo, teniendo en cuenta el uso del framewor lean Startup.\n" +
-        "Responde con tus pensamientos sobre:\n" +
-        "1. Qué significa este nodo, tanto específica generalmente\n" +
-        "2. La relevancia de este nodo, cómo contribuye individual y holísticamente\n" +
-        "3. Dónde encaja en el mapa mental (consulte la sangría enumerada arriba)\n" +
-        "4. ¿Cuáles son algunas cosas a considerar al agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
-        "5. ¿Cuáles son algunas buenas preguntas para hacerle a ChatGPT para comprender mejor este nodo?\n" +
-        "6. Y, por último, sólo algunas ideas creativas novedosas en las que pensar en relación con este nodo.\n" +
+        "Me gustaria que sugirieras por lo menos 4 actores o interesados que pueden intervenir en:'${text_of_node}' nodo para dar solución al problema, teniendo en cuenta el uso del framewor lean Startup.\n" +
+        "Asimismo en deseo que para la seleccion de los actores tengas en consideración\n" +
+        "1. Los involucrados en el tema: '${text_of_node}'\n" +
+        "2. los actores o interesados en dar solución al problema\n"+
+        "3. los stakeholders que se necesitaria para resolver '${text_of_node}'"+ 
         "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones en una lista arriba."
     );
 
@@ -85,8 +82,8 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       "child-node-suggestion",
       "Estoy creando un mapa de impacto. Esto es lo que está visible actualmente\n" +
         "${hyphenated_list}\n" +
-        "Necesito que establescas jerarquias inciando por nombrar a los actores claves para agregar al menos dos nodos secundarios a '${text_of_node}', haciendo uso del framework lean Startup \n" +
-        "Proporcione una lista de conceptos iniando por los actores, luego establece objetivo por actor y finalmente los entregables por objetivo, en el mismo formato con guiones anterior, que serían los nodos hijos ideales de '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.\n" +
+        "Necesito que establescas el impacto que tiene cada actor:${text_of_node}, para agregar al menos dos nodos secundarios a '${text_of_node}', haciendo uso del framework lean Startup \n" +
+        "Proporcione una lista de conceptos estableciendo su impacto y finalmente los entregables por objetivo, en el mismo formato con guiones anterior, que serían los nodos hijos ideales de '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.\n" +
         "Coloca los conceptos claves relacionados con el tema central: ${text_of_node}', Cada nodo debe contener una solo actor del tema:  '${text_of_node}'nodo, para luego establecer los objetivos por actor y los entragables.\n" 
   //       "Ademas de tener en cuenta conceptos o pensaminetos sobre:\n" +
   //       "1. El problema que abarca\n" +
