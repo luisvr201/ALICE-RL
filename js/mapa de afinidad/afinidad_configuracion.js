@@ -70,14 +70,14 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
       "Estoy creando un mapa de afinidad. Esto es lo que está actualmente visible en el mapa de afinidad:\n" +
         "${hyphenated_list}\n" +
         "Me gustaría hablar con usted sobre el '${text_of_node}' nodo, teniendo en cuenta el uso del framewor lean Startup.\n" +
-        "Responde con tus pensamientos sobre:\n" +
-        "1. Qué significa este nodo, tanto específica generalmente\n" +
-        "2. La relevancia de este nodo, cómo contribuye individual y holísticamente\n" +
-        "3. Dónde encaja en el mapa mental (consulte la sangría enumerada arriba)\n" +
-        "4. ¿Cuáles son algunas cosas a considerar al agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
-        "5. ¿Cuáles son algunas buenas preguntas para hacerle a ChatGPT para comprender mejor este nodo?\n" +
-        "6. Y, por último, sólo algunas ideas creativas novedosas en las que pensar en relación con este nodo.\n" +
-        "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones en una lista arriba."
+        // "Responde con tus pensamientos sobre:\n" +
+        // "1. Qué significa este nodo, tanto específica generalmente\n" +
+        // "2. La relevancia de este nodo, cómo contribuye individual y holísticamente\n" +
+        // "3. Dónde encaja en el mapa mental (consulte la sangría enumerada arriba)\n" +
+        // "4. ¿Cuáles son algunas cosas a considerar al agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
+        // "5. ¿Cuáles son algunas buenas preguntas para hacerle a ChatGPT para comprender mejor este nodo?\n" +
+        // "6. Y, por último, sólo algunas ideas creativas novedosas en las que pensar en relación con este nodo.\n" +
+        // "Al abordar estos puntos, recuerde que estamos hablando de la ${text_of_node}' nodo dentro del contexto del mapa mental con guiones en una lista arriba."
     );
 
     document.getElementById("child-node-suggestion").value = getValueOrDefault(
