@@ -36,6 +36,30 @@
     <script src="https://unpkg.com/jsmind-simbiotico@0.5.6/js/jsmind.draggable-node.js" integrity="sha384-GFQFZXgSIVm6wgUddmRKVIMyPAd+6Bk2TuUXnwb6U0PUMThttsKrAET9K/JawGTN" crossorigin="anonymous"></script>
 </head>
 <body>
+	 <nav class="navbar bg-body-tertiary fixed-top menu-tot">
+        <div class="container-fluid">
+            <a class="navbar-brand">ALICE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ALICE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <button class="form-control" id="project-mainFirst">proyecto</button>
+              <button id="btn-mapAfin" class="form-control desact">mapa de afinidad</button>
+              <a href="./brainstorming.html" style="text-decoration: none;"><button id="btn-breakstorm" class="form-control desact" >brainstorming</button></a>
+              <button id="btn-mapImp" class="form-control desact" >mapa de inpacto</button>
+
+                    <a href="#" class="logged-in" id="logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <h1 class="text-center mt-4">Mapa de Afinidad</h1>
       <!-- la alerta -->
 
