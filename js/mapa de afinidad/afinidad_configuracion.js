@@ -83,20 +83,11 @@ setupPopSizeListener(750, 600, document.getElementById("settings-popup"));
     document.getElementById("child-node-suggestion").value = getValueOrDefault(
       options,
       "child-node-suggestion",
-      "Estoy creando un mapa de afinidad. Esto es lo que está visible actualmente\n" +
+	"Estoy creando un mapa de afinidad. Esto es lo que está visible actualmente\n" +
         "${hyphenated_list}\n" +
         "Necesito algunos conceptos claves para agregar al menos dos nodos secundarios a '${text_of_node}', haciendo uso del framework lean Startup \n" +
         "Proporcione una lista de conceptos, en el mismo formato con guiones anterior, que serían los nodos hijos ideales de '${text_of_node}', sin líneas vacías. La lista debe priorizarse por relevancia e importancia.\n" +
         "Coloca los conceptos claves relacionados con el tema central: ${text_of_node}', Cada nodo debe contener una solo una idea o concepto de:  '${text_of_node}' nodo.\n" 
-  //       "Ademas de tener en cuenta conceptos o pensaminetos sobre:\n" +
-  //       "1. El problema que abarca\n" +
-  //       "2. Factores o elementos que contribuyen al problema\n" +
-  //       "3. soluciones o enfoques se han considerado previamente para afontar el problema (consulte la sangría enumerada arriba)\n" +
-  //       "4. Los objetivos que queremos lograr, agregar nodos secundarios, hermanos y principales a su alrededor en el mapa mental?\n" +
-  //       "5. Recursos están disponibles para abordar este problema\n" +
-  //       "Al abordar estos puntos, recuerde que estamos hablando de: ${text_of_node}' nodo dentro del contexto del mapa de afinidad con guiones en una lista arriba.\n"+
-	// "Debe haber al menos dos conceptos claves para los nodos secundarios inmediatos de '${text_of_node}'.\n"+
-	// "Cada sugerencia debe complementar, aumentar y armonizar con el mapa de afinidad mencionado anteriormente siguiendo la metodologia Lean Startup.\n"
     );
     document.getElementById("prefix-prompt").value = getValueOrDefault(
       options,
