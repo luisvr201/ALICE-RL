@@ -1,0 +1,27 @@
+#container{
+    margin-top: 4rem;
+    margin-left: 0;
+    
+}
+.card{
+    height: 18vh;
+}
+.contenedor-general{
+    width: 100vw;
+    height: 91.4vh;
+}
+.mapImp{
+    background: greenyellow;
+    width: 100%;
+    height: 100%;
+}
+.breakstorm{
+    background: rgb(118, 129, 103);
+    width: 100%;
+    height: 100%;
+}
+.mapAfin{
+    background: rgb(207, 225, 183);
+    width: 100%;
+    height: 100%;
+}

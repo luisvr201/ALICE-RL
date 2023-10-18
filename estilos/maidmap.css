@@ -1,7 +1,7 @@
 #main_container {
     width: 200px;
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
   }
 
   #jsmind_container {
@@ -10,8 +10,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000000;
-    z-index: 1;
+    /* background: #000000; */
+    /* z-index: 1; */
   }
 
   #jsmind_nav ul {
