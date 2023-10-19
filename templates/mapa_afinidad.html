@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ALICE-RL</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      integrity="sha384-l06Plad51xhuxEwX9KBVJsB3YBeDeDhvs7QAa0vF9pUb+i2SA40QpPF55L6Rfrzq"
+      crossorigin="anonymous"
+    />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/jsmind@0.7.1/style/jsmind.css"/>
+    <link rel="stylesheet" href="../estilos/alerta.css">
+    <link rel="stylesheet" href="../estilos/chat-consultas.css">
+    <link rel="stylesheet" href="../estilos/configuracion.css">
+    <link rel="stylesheet" href="../estilos/inicio.css">
+    <link rel="stylesheet" href="../estilos/maidmap.css">
+    <link rel="stylesheet" href="../estilos/panel-ayuda.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/jsmind@0.5.4/style/jsmind.css" integrity="sha384-1nTEMjWXLLPe1f1aBitnnwTmPw8N71MrZQQBMQn7ua9HnvdBZrPzhT1DMp2h+baG" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/jsmind-simbiotico@0.5.6/js/jsmind.js" integrity="sha384-R5+m5beLoKFGYYfHYhJjZOFuYIfT3HUmn/8DwFvhVikHnGKsaBes0K45Zme67izm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/jsmind-simbiotico@0.5.6/js/jsmind.draggable-node.js" integrity="sha384-GFQFZXgSIVm6wgUddmRKVIMyPAd+6Bk2TuUXnwb6U0PUMThttsKrAET9K/JawGTN" crossorigin="anonymous"></script>
+</head>
+<body>
+      <!-- la alerta -->
+
+      <div id="custom-alert" class="custom-alert hidden">
+        <div class="custom-alert-content">
+          <span id = "custom-alert-message" class="custom-alert-message"></span>
+          <button class="custom-alert-close" onclick="closeCustomAlert()">OK</button>
+        </div>
+      </div>
+
+      <!-- el inicio -->
+
+      <div id="api-key-modal" class="modal">
+        <div class="modal-content">
+          <h2>Bienvenido a ALICE </h2>
+          <p>Soy asistente desarollado con IA, para potenciar la eficiencia de tu equipo de proyecto y acelera tu camino hacia el éxito con nuestro asistente virtual basado en el framework Lean Startup: la herramienta esencial para una gestión de proyectos más inteligente y ágil.<br/>
+            <br />Mi objetivo es lograr la perfección de tu proyecto, brindando un soporte integral y siguiendo los principios del framework Lean Startup para optimizar tu gestión y alcanzar tus metas de manera más rápida y eficiente.<br />
+            <br />
+            Para empezar necesito que escribas tu API-KEY que te proporciona OPEN AI, con la finalidad de hacer uso de tus token para realizar las consultas<br /></p>
+          <input type="text" id="api-key-input" style="-webkit-text-security: disc;">
+          <button id="submit-api-key">Entregar</button>
+        </div>
+      </div>
+
+    <!-- maidmap -->
+
+    <div id="jsmind_container"></div>
+        <div id="main_container">
+            <div id="jsmind_nav">
+                <div id="button-bar" class="draggable">
+                    <button  class="icon-button"  onclick="save_file();" title="Save File">
+                        <i class="fas fa-download"></i>
+                    </button>
+	      
+        <input
+          id="file_input"
+          class="file_input"
+          type="file"
+          style="display: none"
+        /><label for="file_input" title="Upload File"
+          ><i
+            style="color: #fff; margin-right: 20px; margin-top: 2px; font-size: 24px"
+            class="fas fa-upload"
+          ></i
+        ></label>
+      
+        <button class="icon-button" onclick="add_node();" id="add-node-button" title="Add Node">
+          <i class="fas fa-share-alt"></i>
+        </button>
+      
+        <button  class="icon-button"  onclick="collapse_all();" title="Collapse All">
+          <i class="fas fa-compress-alt"></i>
+        </button>
+      
+        <button  class="icon-button"  onclick="expand_all();" title="Expand All">
+          <i class="fas fa-expand-alt"></i>
+        </button>
+      
+        <button   class="icon-button"  id="zoom-in-button" onclick="zoomIn();" title="Zoom In">
+          <i class="fas fa-search-plus"></i>
+        </button>
+      
+        <button  class="icon-button" id="zoom-out-button" onclick="zoomOut();" title="Zoom Out">
+          <i class="fas fa-search-minus"></i>
+        </button>
+            
+        <button  class="icon-button" onclick="discuss_node()" title="Open Chat">
+          <i class="fas fa-comments"></i>
+        </button>
+      
+       <button  class="icon-button" onclick="restructure()" title="Restructure">
+          <i class="fas fa-random"></i>
+        </button>
+      
+        <button  class="icon-button" onclick="undo()" title="Undo">
+          <i class="fas fa-rotate-left"></i>
+        </button>
+      
+        <button  class="icon-button" onclick="redo()" title="Redo">
+          <i class="fas fa-rotate-right"></i>
+        </button>
+      
+        <button  class="icon-button" onclick="openSettingsPopup()" title="Settings">
+          <i class="fas fa-gear"></i>
+        </button>
+        <button  class="icon-button" onclick="openHelpPopup()" title="Help">
+          <i class="fas fa-info-circle"></i>
+        </button>
+        </div>
+  <div style="display: none">
+    <input class="file" type="file" id="image-chooser" accept="image/*" />
+  </div>
+</div>
+</div>
+
+      <!-- la alerta -->
+
+      <div id="custom-alert" class="custom-alert hidden">
+        <div class="custom-alert-content">
+          <span id = "custom-alert-message" class="custom-alert-message"></span>
+          <button class="custom-alert-close" onclick="closeCustomAlert()">OK</button>
+        </div>
+      </div>
+
+      <!-- apartado de configuracion -->
+
+      <div id="settings-popup" class="popup hidden">
+        <div class="popup-header">
+          <h3>Configuración</h3>
+          <button class="close-btn" onclick="closeSettingsPopup()">
+            <i class="fas fa-window-close"></i>
+          </button>
+        </div>
+        <div class="popup-content">
+          <form id="settings-form">
+            <div class="form-group">
+              <label for="token-usage">Uso de tokens para este mapa:
+              </label>
+              <label
+                id="token-usage"
+              ></label>
+            </div>
+            <div class="form-group">
+              <label for="child-node-suggestion">Mensaje de sugerencia de nodo secundario :</label>
+              <textarea
+                id="child-node-suggestion"
+                rows="8"
+                placeholder="Enter child node suggestion prompt."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="discuss-node-prompt">Discutir mensaje de nodo:</label>
+              <textarea
+                id="discuss-node-prompt"
+                rows="18"
+                placeholder="Enter discuss node prompt"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="prefix-prompt">Discutir el prefijo de aviso:</label>
+              <textarea
+                id="prefix-prompt"
+                rows="5"
+                placeholder="Enter prompt prefix"
+              ></textarea>
+            </div>
+           <div class="form-group">
+              <label for="prefix-prompt">Restructure Prompt:</label>
+              <textarea
+                id="restructure-prompt"
+                rows="5"
+                placeholder="Enter restructure"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="gpt-engine">Motor GPT:</label>
+              <input id="gpt-engine" type="text" placeholder="Enter GPT engine" />
+            </div>
+            
+            <div class="form-group">
+              <label for="gpt-token">Token_Maximos:</label>
+              <input id="gpt-token" type="text" placeholder="Enter Token_Max" value="400"/>
+            </div>
+            
+            <div class="form-group">
+              <label for="temperature">Temperatura:</label>
+              <input id="temperature" type="text" placeholder="Enter temperature" />
+            </div>
+              
+            <div class="form-group">
+              <label for="theme">Tema:</label>
+            <select onchange="set_theme(this.value);">
+                <option value="">por defecto</option>
+                <option value="primary">primario</option>
+                <option value="warning">advertencia</option>
+                <option value="danger">peligro</option>
+                <option value="success">éxito</option>
+                <option value="info">informatico</option>
+                <option value="greensea" selected="selected">Marverde</option>
+                <option value="nephrite">jade</option>
+                <option value="belizehole">belice</option>
+                <option value="wisteria">glicina</option>
+                <option value="asphalt">asfalto</option>
+                <option value="orange">naranja</option>
+                <option value="pumpkin">calabaza</option>
+                <option value="pomegranate">granada</option>
+                <option value="clouds">nubes</option>
+                <option value="asbestos">amianto</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+
+<!-- consultas al chat-gpt -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-header">
+      <h3>Chatea con GPT</h3>
+      <button class="close-btn" onclick="closeChatPopup()">
+        <i class="fas fa-window-close"></i>
+      </button>
+    </div>
+    <div class="chat-content">
+      <div class="chat-messages" id="chat-messages"></div>
+      <div id="anchor"></div>
+    </div>
+    <div class="chat-input">
+      <textarea
+        id="chat-input-text"
+        rows="3"
+        placeholder="Escriba su mensaje, tenga en cuenta que la lista jerárquica anterior aparecerá como prefijo en su mensaje para que pueda consultarla en su mensaje.
+        ."
+      ></textarea>
+      <button class="send-button" onclick="submitChatMessage()">Enviar</button>
+    </div>
+    <div class="resize-handle"><i class="fas fa-arrows-alt"></i></div>
+  </div>
+    
+</body>
+<script src="//cdn.jsdelivr.net/npm/jsmind@0.7.1/es6/jsmind.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jsmind@0.7.1/es6/jsmind.draggable-node.js"></script>
+<script src="../js/generales/alerta.js"></script>
+<script src="../js/generales/chat-consulta.js"></script>
+<script src="../js/generales/inicio.js"></script>
+<script src="../js/generales/utils.js"></script>
+<script src="../js/generales/panel-ayuda.js"></script>
+<script src="../js/mapa de afinidad/afinidad_configuracion.js"></script>
+<script src="../js/mapa de afinidad/afinidad_jsmaid.js"></script>
+<script src="../js/mapa de afinidad/afinidad_maidmap.js"></script>
+</html>
